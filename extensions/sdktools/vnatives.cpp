@@ -163,7 +163,7 @@ static cell_t GiveNamedItem(IPluginContext *pContext, const cell_t *params)
 
 	char *weapon;
 	pContext->LocalToString(params[1], &weapon);
-	if(strncmp(weapon, "weapon_knife_", 13) == 0 && !strcmp(weapon, "weapon_knife_t"))
+	if (strncmp(weapon, "weapon_knife_", 13) == 0 && strcmp(weapon, "weapon_knife_t") != 0)
 	{
 		return pContext->ThrowNativeError("Failed to give item %s", weapon);
 	}
