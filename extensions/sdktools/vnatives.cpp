@@ -161,6 +161,13 @@ static cell_t GiveNamedItem(IPluginContext *pContext, const cell_t *params)
 		}
 	}
 
+	char *weapon;
+	pContext->LocalToString(params[1], &weapon);
+	if(strncmp(weapon, "weapon_knife_", 13) == 0 && !strcmp(weapon, "weapon_knife_t"))
+	{
+		return pContext->ThrowNativeError("Failed to give item %s", weapon);
+	}
+
 	CBaseEntity *pEntity = NULL;
 	START_CALL();
 	DECODE_VALVE_PARAM(1, thisinfo, 0);
